@@ -20,13 +20,17 @@
 		parameterType="java.util.Map">
 		select * from notice where num=#{num} <!-- Map을 사용할떄 key값을 넣음 -->
 	</select>
+	
+	<select id="noticeCount" resultType="java.lang.Integer">
+		select count(num) from notice
+	</select>
 
 	<select id="noticeList"
-		resultType="com.ruda.s3.model.board.NoticeVO">
+		resultType="com.ruda.s3.model.board.NoticeVO" parameterType="java.util.Map">
 		select * from
 		(select N.*, rownum R from
 		(select * from notice order by num desc) N)
-		where R between 1 and 10<!-- 꺼낸거 담아주는 vo를 리턴 -->
+	where R between #{startRow} and #{lastRow}<!-- 꺼낸거 담아주는 vo를 리턴 -->
 	</select>
 
 	<update id="noticeUpdate"
