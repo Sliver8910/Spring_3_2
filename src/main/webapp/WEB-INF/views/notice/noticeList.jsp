@@ -42,10 +42,17 @@
 		
 		<div>
 		 	<ul class="pagination">
-				<c:forEach begin="1" end="${totalPage}" var="i">
+		 		<c:if test="${pager.curBlock > 1}">		 		
+		 			<li><a href="./noticeList?curPage=${pager.startNum-1}"><</a></li>
+		 		</c:if>
+				<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
 					<li><a href="./noticeList?curPage=${i}">${i}</a></li>
 				</c:forEach>
+				<c:if test="${pager.curBlock < pager.totalBlock}">
+					<li><a href="./noticeList?curPage=${pager.lastNum+1}">></a></li>
+				</c:if>
 			</ul>
+			
 		</div>
 		
 			<a class="btn btn-primary" href="noticeWrite">Write</a>
