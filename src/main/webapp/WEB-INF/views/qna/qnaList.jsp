@@ -38,7 +38,7 @@
 			</thead>
 			<tbody>
 				<c:forEach items="${list}" var="dto">
-					<!-- for문과 같은 효과  -->
+					<!-- for문과 같은 효과  -->	
 					<tr>
 						<td class="th1 num">${dto.num}</td>
 						<td><a href="qnaSelect?num=${dto.num}">${dto.title}</a></td>
