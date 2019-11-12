@@ -19,7 +19,7 @@ public class QnaController {
 	@Inject
 	private QnaService qnaService;
 	
-	@RequestMapping("qnaList")
+	@RequestMapping(value = "qnaList")
 	public void qnaList(Model model, Pager pager)throws Exception{
 		List<QnaVO> ar = qnaService.qnaList(pager);
 		model.addAttribute("list", ar);

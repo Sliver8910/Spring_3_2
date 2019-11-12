@@ -5,9 +5,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<title>QnA List</title>
 <c:import url="../layout/bootstrap.jsp"/>
 
-<title>QnA List</title>
 
 </head>
 <body>

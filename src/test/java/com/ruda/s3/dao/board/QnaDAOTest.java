@@ -17,6 +17,19 @@ public class QnaDAOTest extends TestAbstractCase{
 	@Inject
 	private QnaDAO qnaDAO;
 	
+	@Inject
+	private SqlSession sqlsession;
+	
+	@Test
+	public void sqlTest() {
+		assertNotNull(sqlsession);
+	}
+	@Test
+	public void test2() throws Exception {
+	int t	=qnaDAO.qnaCount();
+	
+	assertNotNull(t);
+	}
 	
 
 	@Test
@@ -25,7 +38,7 @@ public class QnaDAOTest extends TestAbstractCase{
 		List<QnaVO> ar = qnaDAO.qnaList(rowMaker);
 		
 
-		assertEquals(1, ar.size());
+		assertNotEquals(0, ar.size());
 		
 	}
 

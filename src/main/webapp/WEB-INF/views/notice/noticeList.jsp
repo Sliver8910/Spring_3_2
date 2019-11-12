@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <c:import url="../layout/bootstrap.jsp"/>
 
-<title>Insert title here</title>
+<title>NoticeList</title>
 
 </head>
 <body>

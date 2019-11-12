@@ -1,20 +1,20 @@
 package com.ruda.s3.util;
 
 public class RowMaker {
-	private Integer startRow;
-	private Integer lastRow;
-	
-	public Integer getStartRow() {
+	private int startRow;
+	private int lastRow;
+	public int getStartRow() {
 		return startRow;
 	}
-	public void setStartRow(Integer startRow) {
+	public void setStartRow(int startRow) {
 		this.startRow = startRow;
 	}
-	public Integer getLastRow() {
+	public int getLastRow() {
 		return lastRow;
 	}
-	public void setLastRow(Integer lastRow) {
+	public void setLastRow(int lastRow) {
 		this.lastRow = lastRow;
 	}
-
+	
+	
 }
