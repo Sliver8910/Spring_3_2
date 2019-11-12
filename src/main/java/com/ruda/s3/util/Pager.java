@@ -66,7 +66,7 @@ public class Pager {
 
 	public void makePager(int totalCount) {
 		//1. 전체 글의 갯수
-
+		
 		//2. 전체 페이지긔 갯수
 		int totalPage = totalCount/perPage;
 		if(totalCount%perPage !=0) {
