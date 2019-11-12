@@ -21,15 +21,38 @@
 		select * from notice where num=#{num} <!-- Map을 사용할떄 key값을 넣음 -->
 	</select>
 	
-	<select id="noticeCount" resultType="java.lang.Integer">
+	<select id="noticeCount" resultType="java.lang.Integer" parameterType="com.ruda.s3.util.RowMaker">
 		select count(num) from notice
+		<choose>
+			<when test="kind == 'kt'">
+				where title like '%'||#{search}||'%'
+			</when>
+			<when test="kind == 'kw'">
+				where writer like '%'||#{search}||'%'
+			</when>
+			<when test="kind == 'kc'">
+				where contents like '%'||#{search}||'%'
+			</when>
+		</choose>
 	</select>
 
 	<select id="noticeList"
 		resultType="com.ruda.s3.model.board.NoticeVO" parameterType="com.ruda.s3.util.RowMaker">
 		select * from
 		(select N.*, rownum R from
-		(select * from notice order by num desc) N)
+		(select * from notice 
+		<choose>
+			<when test="kind == 'kt'">
+				where title like '%'||#{search}||'%'
+			</when>
+			<when test="kind == 'kw'">
+				where writer like '%'||#{search}||'%'
+			</when>
+			<when test="kind == 'kc'">
+				where contents like '%'||#{search}||'%'
+			</when>
+		</choose>
+		order by num desc) N)
 	where R between #{startRow} and #{lastRow}<!-- 꺼낸거 담아주는 vo를 리턴 -->
 	</select>
 

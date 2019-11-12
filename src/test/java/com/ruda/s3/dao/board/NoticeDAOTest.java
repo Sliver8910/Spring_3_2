@@ -59,10 +59,6 @@ public class NoticeDAOTest extends TestAbstractCase {
 		
 		assertEquals(1, result);
 	}
-		@Test
-		public void noticeCountTest() throws Exception{
-			int count = noticeDAO.noticeCount();
-			assertEquals(71, count);
-		}
+		
 	
 }
