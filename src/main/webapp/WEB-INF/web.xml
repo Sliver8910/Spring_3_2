@@ -21,15 +21,6 @@
     <url-pattern>/</url-pattern>
   </servlet-mapping>
   <filter>
-    <display-name>LoginFilter</display-name>
-    <filter-name>LoginFilter</filter-name>
-    <filter-class>com.ruda.filter.LoginFilter</filter-class>
-  </filter>
-  <filter-mapping>
-    <filter-name>LoginFilter</filter-name>
-    <url-pattern>/notice/noticeWrite</url-pattern>
-  </filter-mapping>
-  <filter>
     <display-name>EncodingFilter</display-name>
     <filter-name>EncodingFilter</filter-name>
     <filter-class>com.ruda.filter.EncodingFilter</filter-class>
