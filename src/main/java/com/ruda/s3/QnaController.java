@@ -45,7 +45,7 @@ public class QnaController {
 	}
 	
 	@RequestMapping(value = "qnaWrite", method = RequestMethod.GET)
-	public String noticeWrite()throws Exception{
+	public String qnaeWrite()throws Exception{
 		
 		return "qna/qnaWrite";
 		
