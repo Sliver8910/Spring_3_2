@@ -2,7 +2,10 @@ package com.ruda.s3.util;
 
 public class Pager {
 	
-	private Integer curPage;
+	private String kind;	//검색 종류
+	private String search; //검색어
+	
+	private Integer curPage; //현재 페이저번호
 	private Integer perPage;
 	private Integer startNum;
 	private Integer lastNum;
@@ -34,6 +37,20 @@ public class Pager {
 	public Integer getTotalBlock() {
 		return totalBlock;
 	}
+	public String getKind() {
+		return kind;
+	}
+	public void setKind(String kind) {
+		this.kind = kind;
+	}
+	public String getSearch() {
+		if(this.search == null)
+			this.search="";
+		return search;
+	}
+	public void setSearch(String search) {
+		this.search = search;
+	}
 	
 	
 	public Pager() {
@@ -48,6 +65,8 @@ public class Pager {
 		RowMaker rowMaker = new RowMaker();
 		rowMaker.setStartRow(startRow);
 		rowMaker.setLastRow(lastRow);
+		rowMaker.setKind(getKind());
+		rowMaker.setSearch(getSearch());
 		return rowMaker;
 	}
 	

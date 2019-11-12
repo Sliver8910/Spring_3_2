@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.ruda.s3.model.board.QnaVO;
+import com.ruda.s3.util.Pager;
 import com.ruda.s3.util.RowMaker;
 
 @Repository
@@ -17,13 +18,19 @@ public class QnaDAO {
 	private SqlSession sqlSession;
 	private static final String NAMESPACE = "qnaMapper.";
 	
-	public int qnaCount()throws Exception{
-		return sqlSession.selectOne(NAMESPACE+"qnaCount");
+	public int qnaCount(Pager pager)throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"qnaCount", pager);
 	}
 	
 	public List<QnaVO> qnaList(RowMaker rowMaker)throws Exception{
 		
 		return sqlSession.selectList(NAMESPACE+"qnaList", rowMaker);
 	}
+	
+	public int qnaInsert(QnaVO qnaVO) throws Exception {
+		 int result = sqlSession.insert(NAMESPACE + "qnaInsert", qnaVO);
+		 
+		 return result;
+	 }
 		
 }

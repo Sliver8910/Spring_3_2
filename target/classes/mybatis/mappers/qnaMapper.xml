@@ -2,15 +2,46 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
-  <mapper namespace="qnaMapper">
-  	<select id="qnaCount" resultType="java.lang.Integer">
-  		select count(num) from qna
-  	</select>
-  	<select id="qnaList" resultType="com.ruda.s3.model.board.QnaVO" parameterType="com.ruda.s3.util.RowMaker">
-		select * from 
+
+<mapper namespace="qnaMapper">
+	<select id="qnaCount" resultType="java.lang.Integer"
+		parameterType="com.ruda.s3.util.RowMaker">
+		select count(num) from qna <!-- 검색 했을떄의 totalPage -->
+		<choose>
+			<when test="kind == 'kt'">
+				where title like '%'||#{search}||'%' <!-- ''가 포함되어있음 연걸연산자 ||를 사용 -->
+			</when>
+			<when test="kind == 'kw'">
+				where writer like '%'||#{search}||'%' <!-- ''가 포함되어있음 연걸연산자 ||를 사용 -->
+			</when>
+			<otherwise>
+				where contents like '%'||#{search}||'%'
+			</otherwise>
+		</choose>
+	</select>
+	<select id="qnaList" resultType="com.ruda.s3.model.board.QnaVO"
+		parameterType="com.ruda.s3.util.RowMaker">
+		<!-- 동적 sql문 choose(swich case와 동일)을 써서 검색하는 sql문추가, 컬럼명은 #{}이런식으로 추가 불가능 -->
+		select * from
 		(select N.*, rownum R from
-		(select * from qna order by num desc)N)
+		(select * from qna
+		<choose>
+			<when test="kind == 'kt'">
+				where title like '%'||#{search}||'%' <!-- ''가 포함되어있음 연걸연산자 ||를 사용 -->
+			</when>
+			<when test="kind == 'kw'">
+				where writer like '%'||#{search}||'%' <!-- ''가 포함되어있음 연걸연산자 ||를 사용 -->
+			</when>
+			<otherwise>
+				where contents like '%'||#{search}||'%'
+			</otherwise>
+		</choose>
+		order by num desc)N)
 		where R between #{startRow} and #{lastRow}
-  	</select>
-  </mapper>
+	</select>
+	<insert id="qnaInsert"
+		parameterType="com.ruda.s3.model.board.QnaVO">
+		insert into qna values(board_seq.nextval, #{title}, #{writer},
+		#{contents},sysdate, 0,0,0,0)
+	</insert>
+</mapper>

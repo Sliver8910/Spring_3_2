@@ -24,13 +24,21 @@ public class QnaDAOTest extends TestAbstractCase{
 	public void sqlTest() {
 		assertNotNull(sqlsession);
 	}
-	@Test
-	public void test2() throws Exception {
-	int t	=qnaDAO.qnaCount();
 	
-	assertNotNull(t);
+	
+	//@Test
+	public void qnaInsertTest()throws Exception{
+		for(int i=0;i<56;i++) {
+			QnaVO qnaVO = new QnaVO();
+			qnaVO.setTitle("qt"+i);
+			qnaVO.setWriter("qw"+i);
+			qnaVO.setContents("qc"+i);
+			int result = qnaDAO.qnaInsert(qnaVO);
+			assertEquals(1, result);
+		}
+		
+		
 	}
-	
 
 	@Test
 	public void qnaListTest() throws Exception{
