@@ -21,6 +21,7 @@ public class RowMaker {
 	public int getStartRow() {
 		return startRow;
 	}
+
 	public void setStartRow(int startRow) {
 		this.startRow = startRow;
 	}
@@ -30,6 +31,6 @@ public class RowMaker {
 	public void setLastRow(int lastRow) {
 		this.lastRow = lastRow;
 	}
-	
+
 	
 }

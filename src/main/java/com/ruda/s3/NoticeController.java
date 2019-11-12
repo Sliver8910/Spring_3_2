@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.ruda.s3.model.board.NoticeVO;
 import com.ruda.s3.service.board.NoticeService;
+import com.ruda.s3.util.Pager;
 
 @Controller
 @RequestMapping("/notice/**")
@@ -25,12 +26,10 @@ public class NoticeController {
 	//view : /WEB-INF/view/notice/noticeList.jsp
 	
 	@RequestMapping(value = "noticeList")
-	public void noticeList(Model model, @RequestParam(required = false, defaultValue = "1") int curPage)throws Exception{
-		Map<String, Object> map = noticeService.noticeList(curPage);
-		List<NoticeVO> ar = (List<NoticeVO>)map.get("list");
-		int totalPage= (Integer)map.get("totalPage");
-		model.addAttribute("totalPage", totalPage);
+	public void noticeList(Model model, Pager pager)throws Exception{
+		List<NoticeVO> ar = noticeService.noticeList(pager);
 		model.addAttribute("list", ar);
+		model.addAttribute("pager", pager);
 	}
 	
 	@RequestMapping(value = "noticeSelect")
