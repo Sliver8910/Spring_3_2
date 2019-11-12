@@ -75,7 +75,7 @@
 
 		</div>
 
-		<a class="btn btn-primary" href="./noticeWrite">Write</a>
+		<a class="btn btn-primary" href="noticeWrite">Write</a>
 	</div>
 
 	<script type="text/javascript">
