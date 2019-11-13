@@ -27,10 +27,30 @@ public class QnaDAO {
 		return sqlSession.selectList(NAMESPACE+"qnaList", rowMaker);
 	}
 	
-	public int qnaInsert(QnaVO qnaVO) throws Exception {
-		 int result = sqlSession.insert(NAMESPACE + "qnaInsert", qnaVO);
+	public int qnaWrite(QnaVO qnaVO) throws Exception {
+		 int result = sqlSession.insert(NAMESPACE + "qnaWrite", qnaVO);
 		 
 		 return result;
 	 }
+	
+	public QnaVO qnaSelect(int num) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"qnaSelect", num);
 		
+	}
+	
+	public int qnaDelete(int num) throws Exception{
+		return sqlSession.delete(NAMESPACE+"qnaDelete", num);
+	}
+	
+	public int qnaUpdate(QnaVO qnaVO)throws Exception{
+		return sqlSession.update(NAMESPACE+"qnaUpdate", qnaVO);
+		
+	}
+	
+	public int qnaReply(QnaVO qnaVO) throws Exception{
+		return sqlSession.insert(NAMESPACE+"qnaReply", qnaVO);
+	}
+	public int qnaReplyUpdate(QnaVO qnaVO)throws Exception{
+		return sqlSession.update(NAMESPACE+"qnaReplyUpdate", qnaVO);
+	}
 }

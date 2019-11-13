@@ -41,7 +41,9 @@
 					<!-- for문과 같은 효과  -->	
 					<tr>
 						<td class="th1 num">${dto.num}</td>
-						<td><a href="qnaSelect?num=${dto.num}">${dto.title}</a></td>
+						<td>
+						<c:forEach begin="1" end="${dto.depth}">--</c:forEach>
+						<a href="qnaSelect?num=${dto.num}">${dto.title}</a></td>
 						<td class="th1">${dto.writer}</td>
 						<td class="th1 date">${dto.reg_date}</td>
 						<td class="th1 hit">${dto.hit}</td>

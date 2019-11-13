@@ -58,6 +58,7 @@ public class Pager {
 		// TODO Auto-generated constructor stub
 	}
 	
+	//DB
 	public RowMaker makeRow() {
 		
 		int startRow = (this.getCurPage()-1)*perPage+1; //꺼낼때 null이라면 에러가 생김
@@ -70,6 +71,7 @@ public class Pager {
 		return rowMaker;
 	}
 	
+	//View
 	public void makePager(int totalCount) {
 		int totalPage = totalCount/perPage;
 		if(totalCount%perPage !=0) {
